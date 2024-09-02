@@ -14,7 +14,7 @@ def get_html(page):
     return HTMLParser(resp.text)
 
 def parse_products(html):
-    products = html.css('div.s-main-slot div.s-result-item')
+    products = html.css('div.puis-card-container')
 
     results = []
     for item in products:
@@ -29,7 +29,7 @@ def parse_products(html):
     return results
 
 def to_csv(res):
-    with open('amznmob.csv', 'a', newline='', encoding='utf-8') as f:
+    with open('amznmob2.csv', 'a', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=['title', 'price'])
         writer.writeheader()
         writer.writerows(res)
